@@ -8,6 +8,7 @@ import Loading from "../Loading";
 
 function Layout(props) {
   const { isLoading, posts } = props;
+
   return (
     <Fragment>
       <SearchBar />

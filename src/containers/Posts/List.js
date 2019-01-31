@@ -11,11 +11,11 @@ class List extends Component {
     this.scrollHeight = 0;
     this.scrollTop = 0;
     this.node = undefined;
-    this.btnRef = React.createRef();
+    this.list = React.createRef();
   }
 
   componentDidMount() {
-    this.node = this.btnRef.current;
+    this.node = this.list.current;
     this.refresh = setInterval(this.autoRefresh, 5000);
   }
 
@@ -44,6 +44,7 @@ class List extends Component {
       this.node.scrollTop + this.node.offsetHeight ===
       this.node.scrollHeight
     ) {
+      console.log("sisi");
       this.getMorePosts();
     }
   }
@@ -58,7 +59,7 @@ class List extends Component {
   };
 
   render() {
-    console.log(this.props);
+    console.log(this.scrollHeight, this.scrollTop);
     const { posts, subreddit } = this.props;
     const showPosts = posts.map((post, i) => {
       return <Post key={i} post={post} />;
@@ -66,13 +67,8 @@ class List extends Component {
     return (
       <div
         onScroll={e => this.handleScroll(e.target)}
-        ref={this.btnRef}
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          overflowY: "scroll",
-          height: "100vh"
-        }}
+        ref={this.list}
+        className="list"
       >
         <h1>{subreddit} Posts</h1>
         <div className="container">{showPosts}</div>

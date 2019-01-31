@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 
 function Post(props) {
   const { author, title, permalink, thumbnail, url } = props.post;
-  console.log(thumbnail);
   return (
     <div className="post_container">
       <small>Posted by {author}</small>
