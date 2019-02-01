@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Post displays data correctly 1`] = `
+<div
+  className="post_container"
+>
+  <small>
+    Posted by 
+    Author Name
+     
+    a few seconds ago
+  </small>
+  <a
+    href="url"
+    rel="noopener noreferrer"
+    target="_blank"
+  >
+    <h2>
+      Post Title
+    </h2>
+  </a>
+  <img
+    alt=""
+    src="https://bit.ly/2tmUlty"
+  />
+  <a
+    href="http://www.reddit.comPermalink"
+    rel="noopener noreferrer"
+    target="_blank"
+  >
+    345
+     comments
+  </a>
+</div>
+`;

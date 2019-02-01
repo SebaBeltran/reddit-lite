@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import Post from "../../components/Post";
 import { getNextPosts, getPrevPosts } from "../../redux/actions/actions";
@@ -8,15 +8,12 @@ class List extends Component {
   constructor() {
     super();
 
-    this.scrollHeight = 0;
-    this.scrollTop = 0;
-    this.node = undefined;
     this.list = React.createRef();
   }
 
   componentDidMount() {
     this.node = this.list.current;
-    this.refresh = setInterval(this.autoRefresh, 5000);
+    this.refresh = setInterval(this.autoRefresh, 60000);
   }
 
   componentWillUnmount() {
@@ -38,13 +35,13 @@ class List extends Component {
         this.scrollTop + (this.node.scrollHeight - this.scrollHeight);
     }
   }
+
   handleScroll() {
-    //fetch posts when user reached the bottom
+    //fetch more posts when user reached the bottom
     if (
       this.node.scrollTop + this.node.offsetHeight ===
       this.node.scrollHeight
     ) {
-      console.log("sisi");
       this.getMorePosts();
     }
   }
@@ -59,7 +56,6 @@ class List extends Component {
   };
 
   render() {
-    console.log(this.scrollHeight, this.scrollTop);
     const { posts, subreddit } = this.props;
     const showPosts = posts.map((post, i) => {
       return <Post key={i} post={post} />;

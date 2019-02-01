@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import SearchBar from "./../../containers/SearchBar";
-import List from "./../../containers/Posts/List";
+import List from "./../../containers/List";
 import PropTypes from "prop-types";
 
 import { connect } from "react-redux";

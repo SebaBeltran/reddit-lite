@@ -7,26 +7,27 @@ import { storeSubreddit, getPosts } from "./../../redux/actions/actions";
 import PropTypes from "prop-types";
 
 class SearchBar extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       input: ""
     };
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleInput = term => {
     this.setState({ input: term });
   };
 
-  handleSubmit = () => {
+  handleSubmit() {
     if (this.state.input) {
       const { storeSubreddit, getPosts } = this.props;
       storeSubreddit(this.state.input);
       getPosts(this.state.input);
       this.setState({ input: "" });
     }
-  };
+  }
 
   render() {
     return (

@@ -9,34 +9,6 @@ import {
 } from "./types";
 import thunk from "./thunk";
 
-function isFetching(bool) {
-  return {
-    type: IS_FETCHING,
-    bool
-  };
-}
-
-function postsFetched(payload) {
-  return {
-    type: POSTS_FETCHED,
-    payload
-  };
-}
-
-function morePostsFetched(payload) {
-  return {
-    type: MORE_POSTS_FETCHED,
-    payload
-  };
-}
-
-function newPostsFetched(payload) {
-  return {
-    type: NEW_POSTS_FETCHED,
-    payload
-  };
-}
-
 export function storeSubreddit(payload) {
   return {
     type: STORE_SUBREDDIT,
@@ -44,14 +16,42 @@ export function storeSubreddit(payload) {
   };
 }
 
-function storeAfter(payload) {
+export function isFetching(bool) {
+  return {
+    type: IS_FETCHING,
+    bool
+  };
+}
+
+export function postsFetched(payload) {
+  return {
+    type: POSTS_FETCHED,
+    payload
+  };
+}
+
+export function morePostsFetched(payload) {
+  return {
+    type: MORE_POSTS_FETCHED,
+    payload
+  };
+}
+
+export function newPostsFetched(payload) {
+  return {
+    type: NEW_POSTS_FETCHED,
+    payload
+  };
+}
+
+export function storeAfter(payload) {
   return {
     type: STORE_AFTER,
     payload
   };
 }
 
-function storeBefore(payload) {
+export function storeBefore(payload) {
   return {
     type: STORE_BEFORE,
     payload
@@ -64,10 +64,10 @@ export const getPosts = subreddit => {
     const data = await thunk.fetchPosts(subreddit);
     const { children, after } = data;
     const posts = children.map(e => e.data);
+    dispatch(isFetching(false));
     dispatch(postsFetched(posts));
     dispatch(storeBefore(posts[0].name));
     dispatch(storeAfter(after));
-    dispatch(isFetching(false));
   };
 };
 
