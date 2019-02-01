@@ -20,7 +20,7 @@ How does the app works:
 
 which contains a file for all api requests
 
-## COMPONENTS
+### COMPONENTS
 
 for functional components - reusable UI components
 Layout: is the wrapper for all UI elements and will render the SearchBar component along with the Loading or List components which are conditionally rendered.
